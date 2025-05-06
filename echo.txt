@@ -1,0 +1,25 @@
+echo Hello
+echo "Hello world"
+echo ""
+echo "Multiple    spaces    here"
+echo "Text with special characters !@#$%^&*()"
+echo "String with tabs		and spaces"
+echo "Line1
+Line2"
+echo "A"
+echo "1234567890"
+echo "    Leading and trailing spaces    "
+echo
+echo -n Hello
+echo -n "Hello world"
+echo -n ""
+echo -n "Multiple    spaces    here"
+echo -n "Text with special characters !@#$%^&*()"
+echo -n "String with tabs		and spaces"
+echo -n "A"
+echo -n "1234567890"
+echo -n "    Leading and trailing spaces    "
+echo -n
+echo -n -n Hello
+echo -n hello -n
+echo -n -n Hello -n

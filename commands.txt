@@ -1,0 +1,28 @@
+export VAR1=value
+export VAR2="value with spaces"
+export VAR3=
+export VAR4
+export VAR5=123
+export VAR6="123=456"
+export VAR7="abc def ghi"
+export VAR8='quoted value'
+export VAR9="with special chars !@#$%^&*()"
+export VAR10=value1 VAR11=value2
+export VAR12=value12 VAR13
+export VAR_14=underscore
+export VAR15=value15
+export VAR15=newvalue15
+export VAR16="value with = equals"
+export VAR17="  leading space"
+export VAR18="trailing space  "
+export VAR19="  surrounded  "
+export VAR20="value with	tab"
+export 1INVALID=bad
+export INVALID-VAR=bad
+export =missingname
+export ==doubleequal
+export "VAR22=value22"
+export VAR 23=value23
+export VAR24==value24
+export VAR25=va=lue
+export VAR26="va=lue=with=equals"
