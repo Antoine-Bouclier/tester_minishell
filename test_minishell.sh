@@ -28,22 +28,28 @@ mkdir -p "$MINI_OUTPUT_DIR" "$BASH_OUTPUT_DIR"
 
 echo "===== Lancement des tests ====="
 
+passed=0
 i=1
 
 while IFS= read -r line || [ -n "$line" ]; do
 
     # --- MINISHELL ---
-	echo "$line" | $MINISHELL 2>&1 \
-		| sed '/^minishell =>/d' \
-		| sed '/^$/d' \
-		> "$MINI_OUTPUT_DIR/out_$i.txt"
+    output_minishell=$(echo "$line" | $MINISHELL 2>&1 | sed '/^minishell =>/d' | sed '/^$/d')
+    
+    # Si la ligne contient un echo -n, on enlève le minishell => à la fin
+    if [[ "$line" == *"echo -n"* ]]; then
+        output_minishell=$(echo "$output_minishell" | sed 's/minishell => *//g')
+    fi
+
+    echo "$output_minishell" > "$MINI_OUTPUT_DIR/out_$i.txt"
     mini_status=$?
 
     # --- BASH ---
-	echo "$line" | bash --posix 2>&1 | sed 's/^bash: line 1: //' > "$BASH_OUTPUT_DIR/out_$i.txt"
+    output_bash=$(echo "$line" | bash --posix 2>&1 | sed 's/^bash: line 1: //')
+    echo "$output_bash" > "$BASH_OUTPUT_DIR/out_$i.txt"
     bash_status=$?
 
-    # Comparaisons
+    # Comparaison des résultats
     output_diff=false
     code_diff=false
 
@@ -55,7 +61,9 @@ while IFS= read -r line || [ -n "$line" ]; do
         code_diff=true
     fi
 
+    # Affichage des résultats des tests
     if [ "$output_diff" = false ] && [ "$code_diff" = false ]; then
+        ((passed++))
         if [ "$SHOW_ALL" = true ]; then
             printf "${YELLOW}Test %3d:${RESET} ✅ ${BLUE}%s${RESET} [code: %d]\n" "$i" "$line" "$mini_status"
         fi
@@ -70,3 +78,6 @@ while IFS= read -r line || [ -n "$line" ]; do
 
     ((i++))
 done < "$TEST_FILE"
+
+total=$((i - 1))
+echo -e "\nTests validés : $passed / $total"

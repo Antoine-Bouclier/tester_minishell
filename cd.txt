@@ -1,0 +1,40 @@
+cd
+cd .
+cd ..
+cd /
+cd ~
+cd ~/
+cd $HOME
+cd "$HOME"
+cd /tmp
+cd /var/log
+cd /usr/local/bin
+cd ../..
+cd ../../..
+cd ./..
+cd ./folder
+cd /tmp/../var
+cd
+cd .
+cd ./
+cd ./././.
+cd ././././
+cd ..
+cd ../
+cd ../..
+cd ../.
+cd .././././.
+cd srcs
+cd srcs objs
+cd 'srcs'
+cd "srcs"
+cd '/etc'
+cd /e'tc'
+cd /e"tc"
+cd sr
+cd Makefile
+cd ../minishell
+cd ../../../../../../..
+cd .././../.././../bin/ls
+cd /
+cd '/'

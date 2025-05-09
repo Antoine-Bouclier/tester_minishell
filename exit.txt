@@ -1,0 +1,18 @@
+exit 0
+exit 1
+exit 42
+exit 255
+exit 256
+exit -1
+exit 999999
+exit 9223372036854775807
+exit 9223372036854775808
+exit -9223372036854775808
+exit -9223372036854775809
+exit abc
+exit 123abc
+exit ""
+exit " "
+exit 1 2
+exit 0 1
+exit a b
